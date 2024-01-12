@@ -114,13 +114,9 @@ for brand_info in cars_by_brand_count:
     print(f&quot;Brand: {brand_info['brand']} - Car Count: {brand_info['car_count']}&quot;)
 
 </code></pre>
-<p>Для того, чтобы отсортировать владельцев по дате получения прав воспользуемся методом <code>carOwner.objects.annotate</code> и затем методом <code>order_by</code> </p>
-<pre><code class="language-python">users_sorted_by_license_issue_date = carOwner.objects.annotate(
-    min_license_issue_date=Min('driver_license__date_issue')
-).order_by('min_license_issue_date')
-
-for user in users_sorted_by_license_issue_date:
-    print(f&quot;User: {user.username} - Oldest Driver's License Issue Date: {user.min_license_issue_date}&quot;)
+<h3 id="5">5.Отсортируем всех автовладельцев по дате выдачи удостоверения</h3>
+<pre><code class="language-python">sorted_owners = CarOwner.objects.order_by('driverlicense__date_issue').distinct()
+print(&quot;Отсортированные автовладельцы по дате выдачи удостоверения:&quot;, sorted_owners)
 </code></pre></div>
             </div>
         </div>
