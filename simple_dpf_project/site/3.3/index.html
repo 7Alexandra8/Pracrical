@@ -103,7 +103,7 @@ print(&quot;Дата выдачи самого старшего водитель
 print(f&quot;Oldest Possession: Car ID {oldest_possession.id_car.id} by Owner ID {oldest_possession.id_owner.id} - Start Date: {oldest_possession.date_start}&quot;)
 
 </code></pre>
-<h3 id="3_2">3. Вывести количество машин для каждого водителя</h3>
+<h3 id="3_2">3. Выведим количество машин для каждого водителя</h3>
 <pre><code class="language-python">cars_per_owner = CarOwner.objects.annotate(num_cars=Count('possession__id_car')).values('id_owner', 'num_cars')
 print(&quot;Количество машин для каждого водителя:&quot;, cars_per_owner)
 </code></pre>
@@ -114,10 +114,9 @@ for brand_info in cars_by_brand_count:
     print(f&quot;Brand: {brand_info['brand']} - Car Count: {brand_info['car_count']}&quot;)
 
 </code></pre>
-<h3 id="5">5 Отсортируем всех автовладельцев по дате выдачи удостоверения</h3>
+<h3 id="5">5.Отсортируем всех автовладельцев по дате выдачи удостоверения</h3>
 <pre><code class="language-python">sorted_owners = CarOwner.objects.order_by('driverlicense__date_issue').distinct()
 print(&quot;Отсортированные автовладельцы по дате выдачи удостоверения:&quot;, sorted_owners)
-
 </code></pre></div>
             </div>
         </div>
